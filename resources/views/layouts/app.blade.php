@@ -11,7 +11,9 @@
     </head>
     <body>
         <div>
+            <a href="{{route('pages.index')}}">Главная</a>
             <a href="{{route('articles.index')}}">Статьи</a>
+            <a href="{{route('articles.create')}}">Создать статью</a>
             <a href="{{route('pages.about')}}">О блоге</a>
         </div>
         <div class="container mt-4">
