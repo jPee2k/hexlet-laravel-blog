@@ -19,6 +19,8 @@ Route::get('/', 'PageController@index')
 Route::get('/about', 'PageController@about')
     ->name('pages.about');
 
+// Article Controller
+
 Route::get('/articles', 'ArticleController@index')
     ->name('articles.index');
 
@@ -30,3 +32,11 @@ Route::get('/articles/{id}', 'ArticleController@show')
 
 Route::post('/articles', 'ArticleController@store')
     ->name('articles.store');
+
+Route::get('/articles/{id}/edit', 'ArticleController@edit')
+    ->name('articles.edit');
+
+Route::patch('/articles/{id}', 'ArticleController@update')
+    ->name('articles.update');
+
+// Article Category Controller

@@ -4,6 +4,7 @@
 @section('header', 'Список статей')
 
 @section('content')
+    <small><a href="{{route('articles.create')}}">Создать статью</a></small>
     @if (Session::has('success'))
         <div>
             {{ Session::get('success') }}
@@ -11,8 +12,11 @@
     @endif
 
     @foreach ($articles as $article)
-        <h2><a href="{{ route('articles.show', $article->id) }}">{{$article->name}}</a></h2>
-        <div>{{Str::limit($article->body, 200)}}</div>
+        <div>
+            <h2><a href="{{ route('articles.show', $article) }}">{{ $article->name }}</a></h2>
+            <small><a href="{{ route('articles.edit', $article) }}">Редактировать</a></small>
+        </div>
+        <div>{{ Str::limit($article->body, 200) }}</div>
     @endforeach
     <div>{{$articles->links()}}</div>
 @endsection
