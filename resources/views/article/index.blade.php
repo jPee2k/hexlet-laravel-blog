@@ -15,6 +15,7 @@
         <div>
             <h2><a href="{{ route('articles.show', $article) }}">{{ $article->name }}</a></h2>
             <small><a href="{{ route('articles.edit', $article) }}">Редактировать</a></small>
+            <small><a href="{{ route('articles.destroy', $article) }}" data-confirm="Вы уверены?" data-method="delete" rel="nofollow">Удалить</a></small>
         </div>
         <div>{{ Str::limit($article->body, 200) }}</div>
     @endforeach
