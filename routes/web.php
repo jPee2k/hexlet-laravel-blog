@@ -20,26 +20,4 @@ Route::get('/about', 'PageController@about')
     ->name('pages.about');
 
 // Article Controller
-
-Route::get('/articles', 'ArticleController@index')
-    ->name('articles.index');
-
-Route::get('/articles/create', 'ArticleController@create')
-    ->name('articles.create');
-
-Route::get('/articles/{id}', 'ArticleController@show')
-    ->name('articles.show');
-
-Route::post('/articles', 'ArticleController@store')
-    ->name('articles.store');
-
-Route::get('/articles/{id}/edit', 'ArticleController@edit')
-    ->name('articles.edit');
-
-Route::patch('/articles/{id}', 'ArticleController@update')
-    ->name('articles.update');
-
-Route::delete('/articles/{id}', 'ArticleController@destroy')
-    ->name('articles.destroy');
-
-// Article Category Controller
+Route::resource('/articles', 'ArticleController');
