@@ -11,9 +11,10 @@
     </head>
     <body>
         <div>
-            <a href="{{route('pages.index')}}">Главная</a>
-            <a href="{{route('articles.index')}}">Статьи</a>
-            <a href="{{route('pages.about')}}">О блоге</a>
+            <a href="{{ route('pages.index') }}">Главная</a>
+            <a href="{{ route('article_categories.index') }}">Категории</a>
+            <a href="{{ route('articles.index') }}">Статьи</a>
+            <a href="{{ route('pages.about') }}">О блоге</a>
         </div>
         <div class="container mt-4">
             <h1>@yield('header')</h1>

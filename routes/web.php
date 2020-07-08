@@ -21,3 +21,6 @@ Route::get('/about', 'PageController@about')
 
 // Article Controller
 Route::resource('/articles', 'ArticleController');
+
+// ArticleCategory Controller
+Route::resource('/article_categories', 'ArticleCategoryController');

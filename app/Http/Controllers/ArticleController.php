@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
-use App\Http\Requests\storeArticle;
+use App\Http\Requests\StoreArticle;
 
 
 class ArticleController extends Controller
@@ -39,7 +40,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeArticle $request)
+    public function store(StoreArticle $request)
     {
         $data = $request->validated();
         $article = new Article();
@@ -60,7 +61,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('article.show', compact('article'));
+        $category = ArticleCategory::findOrFail($article->category_id);
+
+        return view('article.show', compact('article', 'category'));
     }
 
     /**
