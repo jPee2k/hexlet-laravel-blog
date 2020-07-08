@@ -12,3 +12,5 @@
 {{ Form::text('name') }}<br>
 {{ Form::label('body', 'Содержание') }}
 {{ Form::textarea('body') }}<br>
+{{ Form::label('category_id', 'Категория') }}<br>
+{{ Form::select('category_id', $categories) }}<br>

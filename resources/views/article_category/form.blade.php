@@ -8,10 +8,11 @@
     </div>
 @endif
 
-{{ Form::label('name', 'Название категории') }}
+{{ Form::label('name', 'Название категории') }}<br>
 {{ Form::text('name') }}<br>
-{{ Form::label('description', 'Описание') }}
+{{ Form::label('description', 'Описание') }}<br>
 {{ Form::textarea('description') }}<br>
+{{ Form::label('state', 'Состояние') }}<br>
 {{ Form::select('state', [
     'draft' => 'Черновик',
     'published' => 'Публиуация'

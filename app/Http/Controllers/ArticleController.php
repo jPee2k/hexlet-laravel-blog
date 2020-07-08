@@ -30,8 +30,10 @@ class ArticleController extends Controller
     public function create()
     {
         $article = new Article();
+        $categories = ArticleCategory::all()
+            ->mapWithKeys(fn ($category) => [$category['id'] => $category['name']]);
 
-        return view('article.create', compact('article'));
+        return view('article.create', compact('article', 'categories'));
     }
 
     /**
@@ -47,6 +49,7 @@ class ArticleController extends Controller
 
         $article->fill($data);
         $article->save();
+
         $request->session()->flash('success', 'Статья успешно создана!');
 
         return redirect()
@@ -74,7 +77,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit', compact('article'));
+        $categories = ArticleCategory::all()
+            ->mapWithKeys(fn ($category) => [$category['id'] => $category['name']]);
+
+        return view('article.edit', compact('article', 'categories'));
     }
 
     /**
@@ -88,7 +94,8 @@ class ArticleController extends Controller
     {
         $data = $this->validate($request, [
             'name' => 'required|unique:articles,name,' . $article->id,
-            'body' => 'required|min:100'
+            'body' => 'required|min:100',
+            'category_id' => 'required'
         ]);
         
         $article->fill($data);

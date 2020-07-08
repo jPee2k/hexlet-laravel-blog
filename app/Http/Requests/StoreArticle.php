@@ -25,7 +25,8 @@ class StoreArticle extends FormRequest
     {
         return [
             'name' => 'required|unique:articles',
-            'body' => 'required|min:200'
+            'body' => 'required|min:50',
+            'category_id' => 'required'
         ];
     }
 }

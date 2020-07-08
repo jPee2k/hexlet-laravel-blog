@@ -4,7 +4,7 @@
 @section('header', 'Список статей')
 
 @section('content')
-    <small><a href="{{route('articles.create')}}">Создать статью</a></small>
+    <small><a href="{{ route('articles.create') }}">Создать статью</a></small>
     @if (Session::has('success'))
         <div>
             {{ Session::get('success') }}

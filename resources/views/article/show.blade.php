@@ -9,7 +9,13 @@
 @endsection
 
 @section('content')
-    <small><a href="{{ route('articles.edit', $article) }}">Редактировать</a></small>
-    <small><a href="{{ route('articles.destroy', $article) }}" data-confirm="Вы уверены?" data-method="delete" rel="nofollow">Удалить</a></small>
+    <small>
+        <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
+        <a href="{{ route('articles.destroy', $article) }}"
+            data-confirm="Вы уверены?"
+            data-method="delete"
+            rel="nofollow">Удалить
+        </a>
+    </small>
     <div>{{$article->body}}</div>
 @endsection

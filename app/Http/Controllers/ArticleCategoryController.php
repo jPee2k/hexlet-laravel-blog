@@ -29,6 +29,7 @@ class ArticleCategoryController extends Controller
     public function create()
     {
         $category = new ArticleCategory();
+        
         return view('article_category.create', compact('category'));
     }
 
@@ -42,7 +43,7 @@ class ArticleCategoryController extends Controller
     {
         $data = $this->validate($request, [
             'name' => 'required|unique:article_categories|max:100',
-            'description' => 'required|min:200',
+            'description' => 'required|min:50',
             'state' => [
                 'required',
                 Rule::in(['draft', 'published'])
@@ -94,7 +95,7 @@ class ArticleCategoryController extends Controller
     {
         $data = $this->validate($request, [
             'name' => 'required|unique:article_categories,name,' . $articleCategory->id,
-            'description' => 'required|min:200',
+            'description' => 'required|min:50',
             'state' => [
                 'required',
                 Rule::in(['draft', 'published']),
