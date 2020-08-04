@@ -18,6 +18,9 @@
         </a>
     </small>
     <div>{{ $category->description }}</div>
+    <small>
+        <a href="{{ route('articles.create') }}">Создать Статью</a>
+    </small>
     @if (!$articles->isEmpty())
     <div>
         <h2>Статьи из категории</h2>
