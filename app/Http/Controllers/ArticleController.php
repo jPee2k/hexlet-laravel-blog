@@ -7,7 +7,6 @@ use App\ArticleCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreArticle;
 
-
 class ArticleController extends Controller
 {
     /**
@@ -30,8 +29,7 @@ class ArticleController extends Controller
     public function create()
     {
         $article = new Article();
-        $categories = ArticleCategory::all()
-            ->mapWithKeys(fn ($category) => [$category['id'] => $category['name']]);
+        $categories = ArticleCategory::compactList();
 
         return view('article.create', compact('article', 'categories'));
     }
@@ -77,8 +75,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $categories = ArticleCategory::all()
-            ->mapWithKeys(fn ($category) => [$category['id'] => $category['name']]);
+        $categories = ArticleCategory::compactList();
 
         return view('article.edit', compact('article', 'categories'));
     }
@@ -92,6 +89,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        // todo -> custom-request-validation
         $data = $this->validate($request, [
             'name' => 'required|unique:articles,name,' . $article->id,
             'body' => 'required|min:100',
